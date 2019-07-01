@@ -9,8 +9,8 @@ const Option = ({ handleDeleteAllBook, handleDeleteGlobalGenre,handleDeleteAllGe
   <Grid container>
     <Grid item xs={12}>
       <DeleteAllOption handleDeleteAll={handleDeleteAllBook} type={"books"}></DeleteAllOption>
-      <DeleteAllOption handleDeleteAll={handleDeleteAllGenre} type={"genres"}></DeleteAllOption>
-      <DeleteGenre handleDeleteGlobalGenre={handleDeleteGlobalGenre} genres={genres}></DeleteGenre>
+      {/* <DeleteAllOption handleDeleteAll={handleDeleteAllGenre} type={"genres"}></DeleteAllOption>
+      <DeleteGenre handleDeleteGlobalGenre={handleDeleteGlobalGenre} genres={genres}></DeleteGenre> */}
     </Grid>
   </Grid>
 );
