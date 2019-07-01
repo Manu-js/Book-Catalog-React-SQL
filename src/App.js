@@ -59,7 +59,7 @@ class App extends Component {
       auxArray.push(booksSQL[index].genre3);
     }
   }
-  console.log(auxArray)
+
   this.setState(prevState => ({
     genres: auxArray
   }));
@@ -116,26 +116,9 @@ class App extends Component {
   handleDeleteAllBook() {
     this.setState({ books: [] });
   }
-
-  handleModifyBook1(name, bookSelected, value) {
-    this.setState(prevState => {
-      const newState = {
-        books: prevState.books.map((book, index) => {
-          if (book.id === bookSelected.id) {
-            book = {
-              ...book,
-              [name]: value
-            };
-          }
-          return book;
-        })
-      };
-      return newState;
-    });
-  }
   
   async handleModifyBook(newBook) {
-
+    console.log(newBook);
     await this.updateBookSql(newBook)
     this.getBooksSql();
 
@@ -268,7 +251,7 @@ class App extends Component {
 
   updateBookSql = (bookEditData) => {
 
-    let auxCall = `http://localhost:4000/Books/update?id=${bookEditData.id}&tittle=${bookEditData.tittle}`;
+    let auxCall = `http://localhost:4000/Books/update?id=${bookEditData.id}&tittle=${bookEditData.tittle}&price=${bookEditData.price}`;
 
     if (bookEditData.genres[0] !== undefined){
       auxCall += "&genre1=" + bookEditData.genres[0] + "";
