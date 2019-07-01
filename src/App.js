@@ -118,7 +118,6 @@ class App extends Component {
   }
   
   async handleModifyBook(newBook) {
-    console.log(newBook);
     await this.updateBookSql(newBook)
     this.getBooksSql();
 

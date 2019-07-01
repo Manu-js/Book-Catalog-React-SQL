@@ -52,8 +52,6 @@ class ModalEditBook extends Component {
   }
 
   componentDidMount() {
-
-    console.log("montamos");
     this.setState({ newBookData: this.updateBook() });
   }
   deleteThisBook() {
@@ -88,7 +86,7 @@ class ModalEditBook extends Component {
     });
   }
   handleDeleteGenre(idBook, genre) {
-    console.log(genre);
+
     this.setState(prevState => {
       const newState = {
         newBookData: {

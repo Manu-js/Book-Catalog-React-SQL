@@ -29,7 +29,6 @@ class AddGenre extends Component {
     const { selectBook } = this.props;
     const auxArray =[];
     let auxBook = [];
-    console.log("-->", selectBook)
     auxBook.genres = [];
     if(book.genre1 !== null){
       auxBook.genres.push(book.genre1)
@@ -43,10 +42,10 @@ class AddGenre extends Component {
     return auxArray;
   }
   isGenreExist(inputGenre) {
+
     const auxArray = this.getArrayGenresBook();
-    console.log("culos ",inputGenre)
-    console.log("--> ", auxArray )
     return auxArray.indexOf(inputGenre);
+    
   }
 
   showNewGenre() {
