@@ -25,20 +25,8 @@ class App extends Component {
     this.handleDeleteGlobalGenre = this.handleDeleteGlobalGenre.bind(this);
   }
 
-  componentDidMount() {
-    this.getBooksSql();
-    //this.getGenres();
-    setTimeout(
-      function() {
-        this.setState(prevState => {
-          const newState = {
-            isLoaded: true
-          };
-          return newState;
-        });
-      }.bind(this),
-      2000
-    );
+  async componentDidMount() {
+    await this.getBooksSql();
   }
 
   getGenres() {
@@ -55,20 +43,23 @@ class App extends Component {
       genres: auxArray
     }));
   }
+
  getGenresAux(){
   const auxArray =[];
   const { booksSQL } = this.state;
   for (let index = 0; index < booksSQL.length; index++) {
-    if (auxArray.indexOf(booksSQL[index].genre1) === -1 && booksSQL[index].genre1 != "undefined"){
+
+    if (auxArray.indexOf(booksSQL[index].genre1) === -1 && booksSQL[index].genre1 !== null){
       auxArray.push(booksSQL[index].genre1);
     }
-    if (auxArray.indexOf(booksSQL[index].genre2) === -1 && booksSQL[index].genre2 != "undefined"){
+    if (auxArray.indexOf(booksSQL[index].genre2) === -1 && booksSQL[index].genre2 !== null){
       auxArray.push(booksSQL[index].genre2);
     }
-    if (auxArray.indexOf(booksSQL[index].genre3) === -1 && booksSQL[index].genre3 != "undefined"){
+    if (auxArray.indexOf(booksSQL[index].genre3) === -1 && booksSQL[index].genre3 !== null){
       auxArray.push(booksSQL[index].genre3);
     }
   }
+  console.log(auxArray)
   this.setState(prevState => ({
     genres: auxArray
   }));
@@ -148,31 +139,6 @@ class App extends Component {
     await this.updateBookSql(newBook)
     this.getBooksSql();
 
-    // let newGenreArray = this.state.genres;
-    // newBook.genres.map(genre => {
-    //   if (this.isGenreExist(genre) === -1) {
-    //     newGenreArray.push(genre);
-    //   }
-    //   return genre;
-    // });
-
-    // this.setState(prevState => {
-    //   const newState = {
-    //     books: prevState.books.map((book, index) => {
-    //       if (book.id === newBook.id) {
-    //         book = {
-    //           id: newBook.id,
-    //           genres: newBook.genres,
-    //           price: newBook.price,
-    //           tittle: newBook.tittle
-    //         };
-    //       }
-    //       return book;
-    //     }),
-    //     genres: newGenreArray
-    //   };
-    //   return newState;
-    // });
   }
 
   handleAddGenre(genre, idBook) {
@@ -205,22 +171,6 @@ class App extends Component {
     let newGenreArray = this.state.genres;
     await this.addBookSql(newBook)
     this.getBooksSql();
-
-   // this.getBooksSql();
-    // newBook.genres.map(genre => {
-    //   if (this.isGenreExist(genre) === -1) {
-    //     newGenreArray.push(genre);
-    //   }
-    //   return genre;
-    // });
-    // newBook.id =
-    //   this.state.books.length !== 0
-    //     ? this.state.books[this.state.books.length - 1].id + 1
-    //     : 0;
-    // this.setState(prevState => ({
-    //   books: prevState.books.concat(newBook),
-    //   genres: newGenreArray
-    // }));
   }
 
   handleDeleteGenre(idBook, genre) {
@@ -280,24 +230,17 @@ class App extends Component {
 
   async handleDeleteBook(idBook) {
     await this.deleteBookSql(idBook)
-    this.getBooksSql();
-    // this.getBooksSql();
-
-    // this.setState(prevState => {
-    //   const newState = {
-    //     books: prevState.books.filter(book => book.id !== parseInt(idBook))
-    //   };
-    //   return newState;
-    // });
   }
 
   getBooksSql = _ => {
-    fetch('http://localhost:4000/books')
-      .then(response => response.json())
-      .then(response => this.setState({ booksSQL: response.data}))
-      //.then(response => this.getGenres())
-      .then(response => this.getGenresAux())
-      .catch(err => console.error(err))
+
+        fetch('http://localhost:4000/books')
+        .then(response => response.json())
+        .then(response => this.setState({ booksSQL: response.data}))
+        //.then(response => this.getGenres())
+        .then(response => this.getGenresAux())
+        .catch(err => console.error(err))
+
   }
 
   addBookSql = (newBook) => {
@@ -342,7 +285,7 @@ class App extends Component {
   }
 
   render() {
-    const { booksSQL ,genres, genresFiltered, isLoaded } = this.state;
+    const { booksSQL ,genres, genresFiltered } = this.state;
     return (
       <div className="App">
         <Header />
@@ -351,7 +294,6 @@ class App extends Component {
           booksSQL = {this.getBookList()}
           genres={genres}
           genresFiltered={genresFiltered}
-          isLoaded={isLoaded}
           handleSelectGenre={this.handleSelectGenre}
           handleDeleteAllGenre={this.handleDeleteAllGenre}
           handleAddGenre={this.handleAddGenre}

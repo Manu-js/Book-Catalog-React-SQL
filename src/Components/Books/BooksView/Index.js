@@ -17,7 +17,6 @@ const Booklist = ({ isLoaded,
   handleDeleteGenre, 
   handleAddGenre }) => (
   <section>
-    {isLoaded === true ? (
       <div>
         <CheckGenreList
           genresFiltered={genresFiltered}
@@ -37,12 +36,7 @@ const Booklist = ({ isLoaded,
           handleNewBook={handleNewBook}
           handleDeleteGenre={handleDeleteGenre} />
       </div>
-    ) : (
-        <CircularProgress
-          className="loadDataSpiner"
-          color="secondary"
-        />
-      )}
+
   </section>
 );
 

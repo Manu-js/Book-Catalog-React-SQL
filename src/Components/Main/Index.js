@@ -18,7 +18,7 @@ const Main = ({
   handleDeleteAllGenre,
   handleDeleteAllBook,
   handleDeleteGlobalGenre,
-  isLoaded }) => (
+   }) => (
     <main className="appMain">
       <Switch>
         <Route
@@ -37,7 +37,6 @@ const Main = ({
                 handleDeleteGenre={handleDeleteGenre}
                 handleSelectGenre={handleSelectGenre}
                 handleNewBook={handleNewBook}
-                isLoaded={isLoaded}
               />
             )
           }}
