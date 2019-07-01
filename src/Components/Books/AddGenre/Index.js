@@ -30,14 +30,14 @@ class AddGenre extends Component {
     const auxArray =[];
     let auxBook = [];
     auxBook.genres = [];
-    if(book.genre1 !== null){
-      auxBook.genres.push(book.genre1)
+    if(selectBook.genre1 !== null){
+      auxBook.genres.push(selectBook.genre1)
     }
-    if(book.genre2 !== null){
-      auxBook.genres.push(book.genre2)
+    if(selectBook.genre2 !== null){
+      auxBook.genres.push(selectBook.genre2)
     }
-    if(book.genre3 !== null){
-      auxBook.genres.push(book.genre3)
+    if(selectBook.genre3 !== null){
+      auxBook.genres.push(selectBook.genre3)
     }
     return auxArray;
   }
@@ -45,7 +45,7 @@ class AddGenre extends Component {
 
     const auxArray = this.getArrayGenresBook();
     return auxArray.indexOf(inputGenre);
-    
+
   }
 
   showNewGenre() {
