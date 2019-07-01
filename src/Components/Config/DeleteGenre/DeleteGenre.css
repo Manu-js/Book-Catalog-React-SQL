@@ -1,0 +1,11 @@
+.selectGenre{
+    min-width: 140px !Important;
+}
+.selectGenre label{
+    color: white;
+}
+.deleteSelectGenre{
+    display: inline-block;
+position: relative;
+top: -19px;
+}

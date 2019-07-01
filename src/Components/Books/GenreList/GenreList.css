@@ -1,0 +1,39 @@
+.genreListObject {
+    background-color: #8d8d8d;
+    padding: 5px;
+    margin: 10px 0 0 10px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 7px;
+    z-index: 1;
+    position: relative;
+}
+
+.genreAddList {
+    display: inline-block;
+}
+
+.closeButton {
+    z-index: 999;
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.genreListWrap {
+    text-align: left;
+}
+.genreList {
+    float: left;
+    padding-left: 0px;
+    margin-left: 0px;
+    margin-top: 10px;
+}
+
+.listGenreTittle{
+    display: block;
+}

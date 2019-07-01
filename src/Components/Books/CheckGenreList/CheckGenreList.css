@@ -1,0 +1,6 @@
+.listGenres{
+    display: inline-block;
+    height: 36px;
+    text-align: left;
+    text-transform: capitalize;
+}

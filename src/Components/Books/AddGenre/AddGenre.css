@@ -1,0 +1,9 @@
+.genreAddList{
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.genreAddList div{
+    margin-top: 0px;
+    
+}
