@@ -113,9 +113,6 @@ class App extends Component {
     }
   }
 
-  handleDeleteAllBook() {
-    this.setState({ books: [] });
-  }
   
   async handleModifyBook(newBook) {
     await this.updateBookSql(newBook)
@@ -150,10 +147,16 @@ class App extends Component {
   }
 
   async handleNewBook(newBook) {
-    let newGenreArray = this.state.genres;
     await this.addBookSql(newBook)
     this.getBooksSql();
   }
+
+  async handleDeleteAllBook() {
+    await this.deleteAllBookSql()
+    this.getBooksSql();
+
+  }
+  
 
   handleDeleteGenre(idBook, genre) {
     this.setState(prevState => {
@@ -212,6 +215,8 @@ class App extends Component {
 
   async handleDeleteBook(idBook) {
     await this.deleteBookSql(idBook)
+    this.getBooksSql();
+
   }
 
   getBooksSql = _ => {
@@ -225,8 +230,14 @@ class App extends Component {
 
   }
 
+  deleteAllBookSql = () => {
+    fetch(`http://localhost:4000/Books/deleteAll`)
+    .then(response => response.json())
+    .catch((err => console.log(err)))
+    }
+
   addBookSql = (newBook) => {
-    let auxCall = `http://localhost:4000/Books/add?tittle=${newBook.tittle}`;
+    let auxCall = `http://localhost:4000/Books/add?tittle=${newBook.tittle}&=${newBook.price}`;
 
     if (newBook.genres[0] !== undefined){
       auxCall += "&genre1=" + newBook.genres[0] + "";
@@ -243,6 +254,7 @@ class App extends Component {
   }
 
   deleteBookSql = (bookId) => {
+    console.log(bookId);
     fetch(`http://localhost:4000/Books/delete?id=${bookId}`)
       .then(response => response.json())
       .catch((err => console.log(err)))

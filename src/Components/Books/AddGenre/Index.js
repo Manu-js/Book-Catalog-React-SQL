@@ -17,6 +17,7 @@ class AddGenre extends Component {
   handleAddGenre(event) {
     const { handleAddGenre, selectBook } = this.props;
     if (event.key === "Enter") {
+
       if (this.isGenreExist(event.target.value) === -1) {
         event.preventDefault();
         event.stopPropagation();
