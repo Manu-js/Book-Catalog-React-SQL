@@ -237,7 +237,8 @@ class App extends Component {
     }
 
   addBookSql = (newBook) => {
-    let auxCall = `http://localhost:4000/Books/add?tittle=${newBook.tittle}&=${newBook.price}`;
+
+    let auxCall = `http://localhost:4000/Books/add?tittle=${newBook.tittle}&price=${newBook.price}`;
 
     if (newBook.genres[0] !== undefined){
       auxCall += "&genre1=" + newBook.genres[0] + "";
@@ -254,7 +255,6 @@ class App extends Component {
   }
 
   deleteBookSql = (bookId) => {
-    console.log(bookId);
     fetch(`http://localhost:4000/Books/delete?id=${bookId}`)
       .then(response => response.json())
       .catch((err => console.log(err)))
