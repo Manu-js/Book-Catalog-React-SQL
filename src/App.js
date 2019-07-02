@@ -25,9 +25,7 @@ class App extends Component {
     this.handleDeleteGlobalGenre = this.handleDeleteGlobalGenre.bind(this);
   }
 
-  async componentDidMount() {
-    await this.getBooksSql();
-  }
+
 
   getGenres() {
     const auxArray = [];
@@ -113,12 +111,7 @@ class App extends Component {
     }
   }
 
-  
-  async handleModifyBook(newBook) {
-    await this.updateBookSql(newBook)
-    this.getBooksSql();
 
-  }
 
   handleAddGenre(genre, idBook) {
     this.setState(prevState => {
@@ -145,18 +138,7 @@ class App extends Component {
     const genres = this.state.genres;
     return genres.indexOf(inputGenre);
   }
-
-  async handleNewBook(newBook) {
-    await this.addBookSql(newBook)
-    this.getBooksSql();
-  }
-
-  async handleDeleteAllBook() {
-    await this.deleteAllBookSql()
-    this.getBooksSql();
-
-  }
-  
+ 
 
   handleDeleteGenre(idBook, genre) {
     this.setState(prevState => {
@@ -213,11 +195,32 @@ class App extends Component {
     });
   }
 
+  async handleModifyBook(newBook) {
+    await this.updateBookSql(newBook)
+    this.getBooksSql();
+  }
+
+  async componentDidMount() {
+    await this.getBooksSql();
+  }
+
+  async handleNewBook(newBook) {
+    await this.addBookSql(newBook)
+    this.getBooksSql();
+  }
+
+  async handleDeleteAllBook() {
+    await this.deleteAllBookSql()
+    this.getBooksSql();
+  }
+
   async handleDeleteBook(idBook) {
     await this.deleteBookSql(idBook)
     this.getBooksSql();
 
   }
+
+  /*Llamadas a la base de datos*/ 
 
   getBooksSql = _ => {
 
