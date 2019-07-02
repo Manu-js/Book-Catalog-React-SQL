@@ -32,18 +32,18 @@ class ModalNewBook extends Component {
     const { handleNewBook } = this.props;
     const { newBookData } = this.state
     handleNewBook(newBookData);
-    // const bookReset = {
-    //   newBookData: {
-    //     tittle: '',
-    //     price: '',
-    //     genres: [],
-    //   },
-    // };
-    // this.setState({newBookData:bookReset})
     this.handleClose();
   }
   handleClickOpen = () => {
-    this.setState({ open: true });
+    const bookReset = {
+      
+        tittle: '',
+        price: '',
+        genres: [],
+      
+    };
+    this.setState({ open: true,
+      newBookData: bookReset});
   };
   handleClose = () => {
     this.setState({ open: false });
