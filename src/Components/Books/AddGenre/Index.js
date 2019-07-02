@@ -26,26 +26,12 @@ class AddGenre extends Component {
       this.hideNewGenre();
     }
   }
-  getArrayGenresBook(book){
-    const { selectBook } = this.props;
-    const auxArray =[];
-    let auxBook = [];
-    auxBook.genres = [];
-    if(selectBook.genre1 !== null){
-      auxBook.genres.push(selectBook.genre1)
-    }
-    if(selectBook.genre2 !== null){
-      auxBook.genres.push(selectBook.genre2)
-    }
-    if(selectBook.genre3 !== null){
-      auxBook.genres.push(selectBook.genre3)
-    }
-    return auxArray;
-  }
+  
   isGenreExist(inputGenre) {
 
-    const auxArray = this.getArrayGenresBook();
-    return auxArray.indexOf(inputGenre);
+    const { selectBook } = this.props;
+  
+    return selectBook.genres.indexOf(inputGenre);
 
   }
 

@@ -57,6 +57,7 @@ class ModalEditBook extends Component {
   deleteThisBook() {
     const { handleDeleteBook, bookSelected } = this.props;
     handleDeleteBook(bookSelected.idBooks);
+    this.handleClose();
   }
 
   onBookUpdate(e) {
@@ -157,12 +158,11 @@ class ModalEditBook extends Component {
             <GenreList
               selectBook={this.state.newBookData}
               newBook={this.state.newBookData}
-
               handleAddGenre={this.handleAddNewGenre}
               handleDeleteGenre={this.handleDeleteGenre}
               editOption={true}
             />
-            <AddGenre
+            <AddGenre 
               selectBook={this.state.newBookData}
               handleAddGenre={this.handleAddNewGenre}
               genres={this.state.newBookData.genres}
