@@ -1,7 +1,7 @@
 # Book catalog with React and SQL
 
 This is a books catalog made with react.js. You can manage genres and books as well as filter by genre.
-SQL Server --> https://github.com/ManuQuery/Book-Catalog-Server
+- SQL Server --> https://github.com/ManuQuery/Book-Catalog-Server
 
 ## Getting Started
 
